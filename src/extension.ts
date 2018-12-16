@@ -1,32 +1,26 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import path = require('path');
 import fs = require('fs');
-
 import { Bookmark, MAX_BOOKMARKS, NO_BOOKMARK_DEFINED } from './Bookmark';
 import { Bookmarks } from './Bookmarks';
 import { Sticky } from './Sticky';
 
 const STATE_SVG_VERSION = 'numberedBookmarksSvgVersion';
-const DEFAULT_GUTTER_ICON_FILL_COLOR = '#00ff25';
-const DEFAULT_GUTTER_ICON_NUMBER_COLOR = '#000';
 
 const getFillColor = (): string => {
-  const color = vscode.workspace
+  const config = vscode.workspace
     .getConfiguration('numberedBookmarks')
-    .get<string>('gutterIconFillColor');
-  return color === '' || color === undefined
-    ? DEFAULT_GUTTER_ICON_FILL_COLOR
-    : color;
+    .inspect('gutterIconFillColor');
+  
+  return <string>(config.globalValue ? config.globalValue : config.defaultValue);
 };
+
 const getNumberColor = (): string => {
-  const color = vscode.workspace
+  const config = vscode.workspace
     .getConfiguration('numberedBookmarks')
-    .get<string>('gutterIconNumberColor');
-  return color === '' || color === undefined
-    ? DEFAULT_GUTTER_ICON_NUMBER_COLOR
-    : color;
+    .inspect('gutterIconNumberColor');
+    
+    return <string>(config.globalValue ? config.globalValue : config.defaultValue);
 };
 
 // this method is called when vs code is activated
@@ -102,9 +96,10 @@ export function activate(context: vscode.ExtensionContext) {
   vscode.workspace.onDidChangeConfiguration(
     event => {
       if (
-        event.affectsConfiguration('numberedBookmarks.gutterIconFillColor') ||
-        event.affectsConfiguration('numberedBookmarks.gutterIconNumberColor')
+        event.affectsConfiguration('numberedBookmarks.gutterIconFillColor') 
+        || event.affectsConfiguration('numberedBookmarks.gutterIconNumberColor')
       ) {
+        const x = 1;
         context.globalState.update(
           STATE_SVG_VERSION,
           getCurrentSvgVersion() + 1
@@ -159,11 +154,10 @@ export function activate(context: vscode.ExtensionContext) {
       } catch (err) {
         vscode.window.showErrorMessage(`Can't write to ${err.path}`);
       }
-
-      if (fs.existsSync(`images/bookmark${i}-${v - 1}.svg`)) {
-        fs.unlinkSync(
-          context.asAbsolutePath(`images/bookmark${i}-${v - 1}.svg`)
-        );
+      
+      const prevPath = context.asAbsolutePath(`images/bookmark${i}-${v - 1}.svg`);
+      if (fs.existsSync(prevPath)) {
+        fs.unlinkSync(prevPath);
       }
     }
 
@@ -278,9 +272,7 @@ export function activate(context: vscode.ExtensionContext) {
     updateDecorations();
   });
 
-  vscode.commands.registerCommand('numberedBookmarks.clearFromAllFiles', () => {
-    // for (let index = 0; index < bookmarks.bookmarks.length; index++) {
-    //     let element = bookmarks.bookmarks[ index ];
+  vscode.commands.registerCommand('numberedBookmarks.clearFromAllFiles', () => {  
     for (let element of bookmarks.bookmarks) {
       element.clear();
     }
@@ -703,7 +695,6 @@ export function activate(context: vscode.ExtensionContext) {
   }
 
   function saveWorkspaceState(): void {
-    // return;
     let saveBookmarksInProject: boolean = canSaveBookmarksInProject();
 
     if (saveBookmarksInProject) {

@@ -1,36 +1,10 @@
-<p align="center">
-  <br />
-  <a title="Learn more about Numbered Bookmarks" href="http://github.com/alefragnani/vscode-numbered-bookmarks"><img src="https://raw.githubusercontent.com/alefragnani/vscode-numbered-bookmarks/master/images/numbered-bookmarks-logo-readme.png" alt="Numbered Bookmarks Logo" width="70%" /></a>
-</p>
-
-# What's new in Numbered Bookmarks 5
-
-* Adds **Multi-root** support
-* Adds **background color** for bookmarked lines
-
-# Support
-
-**Numbered Bookmarks** is an open source extension created for **Visual Studio Code**. While being free and open source, if you find it useful, please consider supporting it.
-
-<table align="center" width="60%" border="0">
-  <tr>
-    <td>
-      <a title="Paypal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=EP57F3B6FXKTU&lc=US&item_name=Alessandro%20Fragnani&item_number=vscode%20extensions&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"/></a>
-    </td>
-    <td>
-      <a title="Paypal" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=EP57F3B6FXKTU&lc=BR&item_name=Alessandro%20Fragnani&item_number=vscode%20extensions&currency_code=BRL&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/pt_BR/i/btn/btn_donate_SM.gif"/></a>
-    </td>
-    <td>
-      <a title="Patreon" href="https://www.patreon.com/alefragnani"><img src="https://raw.githubusercontent.com/alefragnani/oss-resources/master/images/button-become-a-patron-rounded-small.png"/></a>
-    </td>
-  </tr>
-</table>
-
 # Numbered Bookmarks
 
-It helps you to navigate in your code, moving between important positions easily and quickly. _In Delphi style._
+It helps you to navigate through your code, moving between important positions easily and quickly.
 
 # Features
+
+You can customize bookmark number and background colors.
 
 ## Available commands
 
@@ -43,33 +17,11 @@ It helps you to navigate in your code, moving between important positions easily
 
 > Both **Toggle** and **Jump to Bookmark** commands are numbered from 0 to 9
 
-> The Numbered Bookmark **0** has been reactivated in [PR #16](https://github.com/alefragnani/vscode-numbered-bookmarks/pull/16), but because of [this issue](https://github.com/Microsoft/vscode/issues/2585) it has no _keyboard shortcut_ defined. If sometime in the future these OS related limitation disappears, the shortcuts will be restored.
-
 ## Manage your bookmarks
 
-### Toggle _'number'_
+You can easily mark/unmark bookmarks in any line and jump between them.
 
-You can easily Mark/Unmark bookmarks on any line. 
-
-![Toggle](images/numbered-bookmarks-toggle.png)
-
-### Navigation
-
-### List
-
-List all bookmarks from the current file and easily navigate to any one. It shows you the line contents and temporarily scroll to that line.
-
-![List](images/numbered-bookmarks-list.gif)
-
-### List from All Files
-
-List all bookmarks from all files and easily navigate to any one. It shows you the line contents and temporarily scroll to that line.
-
-![List](images/numbered-bookmarks-list-from-all-files.gif)
-
-* Bookmarks from the active file only shows the line number and its contents
-* Bookmarks from other files in the project also shows the relative path and filename
-* Bookmarks from files outside the project are denoted with ![Folder](images/bookmarks-folder-icon.png)
+![Toggle](images/numbered-bookmarks-toggle.jpg)
 
 ## Available Settings
 
@@ -77,28 +29,6 @@ List all bookmarks from all files and easily navigate to any one. It shows you t
 ```json
     "numberedBookmarks.saveBookmarksInProject": true
 ```
-
-> the `saveBookmarksBetweenSessions` setting was replaced by this in version 0.8.0
-
-* Per [User Requests](https://github.com/alefragnani/vscode-numbered-bookmarks/issues/6) it is now possible to choose how Bookmarks _Navigate Through All Files_:
-
-```json
-    "numberedBookmarks.navigateThroughAllFiles"
-```
-
-* Choose the background color to use on a bookmarked line
-
-```json
-    "numberedBookmarks.backgroundLineColor"
-```
-
-Possible Values:
-
-Value | Explanation
---------- | ---------
-`false` | _default_ - same behavior as today
-`replace` | you can't have the same numbered bookmark in different files
-`allowDuplicates` | you can have the same numbered bookmark in different files, and if you jump repeatedly to the same number, it will look on other files
 
 * You can change the background color of a bookmark using color names `blue`, RGB `rgb(0, 255, 37)` or HEX `#00ff25` format.
 
@@ -112,12 +42,22 @@ Value | Explanation
     "numberedBookmarks.gutterIconNumberColor"
 ```
 
+* Choose background color to use on a bookmarked line
+
+```json
+    "numberedBookmarks.backgroundLineColor"
+```
+
 ## Project and Session Based
 
 The bookmarks are saved _per session_ for the project that you are using. You don't have to worry about closing files in _Working Files_. When you reopen the file, the bookmarks are restored.
 
 It also works even if you only _preview_ a file (simple click in TreeView). You can put bookmarks in any file and when you preview it again, the bookmarks will be there.
 
+## Collaboration
+
+Feel free to send a PR, feature request or report a bug on github https://github.com/vasilev-alex/vscode-numbered-bookmarks
+
 # License
 
-[MIT](LICENSE.md) &copy; Alessandro Fragnani
+[MIT](LICENSE.md)

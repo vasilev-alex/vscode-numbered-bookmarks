@@ -1,9 +1,9 @@
 {
   "name": "numbered-bookmarks",
   "displayName": "Numbered Bookmarks",
-  "description": "Mark lines and jump to them, in Delphi style",
-  "version": "5.2.0",
-  "publisher": "alefragnani",
+  "description": "Mark lines and easily navigate through your code",
+  "version": "1.0.0",
+  "publisher": "AlexVasilev",
   "galleryBanner": {
     "color": "#000000",
     "theme": "dark"
@@ -19,19 +19,17 @@
     "sticky",
     "jump",
     "mark",
-    "navigation",
-    "Delphi",
-    "multi-root ready"
+    "navigation"
   ],
   "icon": "images/icon.png",
   "license": "SEE LICENSE IN LICENSE.md",
-  "homepage": "https://github.com/alefragnani/vscode-numbered-bookmarks/blob/master/README.md",
+  "homepage": "https://github.com/vasilev-alex/vscode-numbered-bookmarks/blob/master/README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alefragnani/vscode-numbered-bookmarks.git"
+    "url": "https://github.com/vasilev-alex/vscode-numbered-bookmarks.git"
   },
   "bugs": {
-    "url": "https://github.com/alefragnani/vscode-numbered-bookmarks/issues"
+    "url": "https://github.com/vasilev-alex/vscode-numbered-bookmarks/issues"
   },
   "activationEvents": [
     "*"
@@ -144,30 +142,20 @@
           "default": false,
           "description": "Allow bookmarks to be saved (and restored) locally in the opened Project/Folder instead of VS Code"
         },
-        "numberedBookmarks.navigateThroughAllFiles": {
-          "type": "string",
-          "default": "false",
-          "description": "Allow navigation look for bookmarks in all files in the project, instead of only the current",
-          "enum": [
-            "false",
-            "replace",
-            "allowDuplicates"
-          ]
-        },
         "numberedBookmarks.gutterIconFillColor": {
           "type": "string",
-          "default": "#00ff25",
+          "default": "#027ecd",
           "description": "Bookmark background color"
         },
         "numberedBookmarks.gutterIconNumberColor": {
           "type": "string",
-          "default": "#000",
+          "default": "#ffffff",
           "description": "Bookmark number color"
         },
         "numberedBookmarks.backgroundLineColor": {
           "type": "string",
           "default": "",
-          "description": "Specify the background color to use on a bookmarked line"
+          "description": "Bookmarked line background color"
         }
       }
     },
@@ -221,62 +209,52 @@
       },
       {
         "command": "numberedBookmarks.toggleBookmark9",
-        "key": "ctrl+shift+9",
-        "mac": "cmd+shift+9",
+        "key": "ctrl+shift+9",    
         "when": "editorTextFocus"
       },
       {
         "command": "numberedBookmarks.jumpToBookmark1",
-        "key": "ctrl+1",
-        "mac": "cmd+1",
+        "key": "ctrl+1",    
         "when": "editorTextFocus"
       },
       {
         "command": "numberedBookmarks.jumpToBookmark2",
         "key": "ctrl+2",
-        "mac": "cmd+2",
         "when": "editorTextFocus"
       },
       {
         "command": "numberedBookmarks.jumpToBookmark3",
         "key": "ctrl+3",
-        "mac": "cmd+3",
         "when": "editorTextFocus"
       },
       {
         "command": "numberedBookmarks.jumpToBookmark4",
         "key": "ctrl+4",
-        "mac": "cmd+4",
         "when": "editorTextFocus"
       },
       {
         "command": "numberedBookmarks.jumpToBookmark5",
         "key": "ctrl+5",
-        "mac": "cmd+5",
         "when": "editorTextFocus"
       },
       {
         "command": "numberedBookmarks.jumpToBookmark6",
         "key": "ctrl+6",
-        "mac": "cmd+6",
         "when": "editorTextFocus"
       },
       {
         "command": "numberedBookmarks.jumpToBookmark7",
         "key": "ctrl+7",
-        "mac": "cmd+7",
         "when": "editorTextFocus"
       },
       {
         "command": "numberedBookmarks.jumpToBookmark8",
         "key": "ctrl+8",
-        "mac": "cmd+8",
         "when": "editorTextFocus"
       },
       {
         "command": "numberedBookmarks.jumpToBookmark9",
         "key": "ctrl+9",
-        "mac": "cmd+9",
         "when": "editorTextFocus"
       }
     ]

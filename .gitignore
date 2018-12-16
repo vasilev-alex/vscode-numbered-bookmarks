@@ -3,3 +3,4 @@ node_modules
 issues
 debug.log
 images/bookmark?*.svg
+.DS_Store
